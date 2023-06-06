@@ -37,7 +37,8 @@ public class Server {
     public void setEnergyConsumption(double energyConsumption) {
         this.energyConsumption = energyConsumption;
     }
-    public double freeResources(){
+
+    public double freeResources() {
         return maxLoad - load;
     }
 }
