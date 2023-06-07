@@ -5,10 +5,16 @@ public class Server {
     private double maxLoad; // максимальная загрузка 100.00%, 70.55%, 85.00;
     private double energyConsumption; // энергопотребление 70.00 ВТ
 
-    public Server(double load, double maxLoad, double energyConsumption) {
+    public Server(double load,double maxLoad, double energyConsumption) {
         this.load = load;
         this.maxLoad = maxLoad;
         this.energyConsumption = energyConsumption;
+    }
+
+    public Server(double load, double energyConsumption) {
+        this.load = load;
+        this.energyConsumption = energyConsumption;
+        this.maxLoad = 100.00;
     }
 
     public Server() {
@@ -19,6 +25,9 @@ public class Server {
     }
 
     public void setLoad(double load) {
+        if (load > maxLoad){
+            throw new IllegalArgumentException();
+        }
         this.load = load;
     }
 

@@ -4,21 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataCenter {
-private List<Server> servers = new ArrayList<>();
+    private List<Server> servers = new ArrayList<>();
+
     public List<Server> getServers() {
         return servers;
     }
-    public double freeLoadOfAllServers(){
+
+    public double freeLoadOfAllServers() {
         double result = 0.0;
-        for (Server server : servers){
+        for (Server server : servers) {
             result += server.freeResources();
         }
         return result;
     }
-    public double loadOfAllServers(){
+
+    public double loadOfAllServers() {
         double result = 0.0;
-        for (Server server : servers){
+        for (Server server : servers) {
             result += server.getLoad();
+        }
+        return result;
+    }
+
+    public double maxLoadOfAllServers() {
+        double result = 0.0;
+        for (Server server : servers) {
+            result += server.getMaxLoad();
         }
         return result;
     }
