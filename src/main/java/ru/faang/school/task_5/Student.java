@@ -17,13 +17,16 @@ public class Student {
         return name;
     }
 
+
     public String getFaculty() {
         return faculty;
     }
 
+
     public int getYear() {
         return year;
     }
+
 
     @Override
     public boolean equals(Object o) {
