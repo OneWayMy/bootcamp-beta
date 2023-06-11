@@ -13,6 +13,10 @@ public class Book {
         this.year = year;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -23,7 +27,8 @@ public class Book {
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, author, year);
+        int prime = 31;
+        return prime * Objects.hash(title, author, year);
     }
 
     @Override

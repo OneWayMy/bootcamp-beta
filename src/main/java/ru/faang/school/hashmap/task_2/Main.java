@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
-    private static final Map<Book, String> books = new HashMap<>();
+    private static Map<Book, String> books = new HashMap<>();
 
     public static void main(String[] args) {
         addBook("Mark", "Maks", 2023, "1");
@@ -15,17 +15,22 @@ public class Main {
 
         deleteBook("Mark", "Maks", 2023);
         bookAll();
-
+        deleteBook("Lex");
         System.out.println(searchBook("Mark", "Maks", 2023));
         System.out.println(searchBook("Lex", "Lexa", 2022));
+        bookAll();
     }
 
-    private static void addBook(String title, String author, int year, String numberPolk) {
-        books.put(new Book(title, author, year), numberPolk);
+    private static void addBook(String title, String author, int year, String shelfNumber) {
+        books.put(new Book(title, author, year), shelfNumber);
     }
 
     private static void deleteBook(String title, String author, int year) {
         books.remove(new Book(title, author, year));
+    }
+
+    private static void deleteBook(String title) {
+        books.entrySet().removeIf(bookStringEntry -> bookStringEntry.getKey().getTitle().equals(title));
     }
 
     private static String searchBook(String title, String author, int year) {
@@ -33,10 +38,14 @@ public class Main {
         if (books.containsKey(book)) {
             return books.get(book);
         }
-        return "book net!!";
+        return "Такой книги нет !!";
     }
 
     private static void bookAll() {
-        books.forEach((key, value) -> System.out.println(key.toString() + " полка: " + value));
+        if (!books.isEmpty()) {
+            books.forEach((key, value) -> System.out.println(key.toString() + " полка: " + value));
+        } else {
+            System.out.println("Книжная полка пуста !!!");
+        }
     }
 }
